@@ -23,7 +23,15 @@ namespace BT_Pläne1
         public MainWindow()
         {
             InitializeComponent();
-
+            IList<Person>item = Person.getPerson("Mitarbeiter");
+                        foreach (var per in item)
+            {
+                listPerson.Items.Add(new{
+                    id = per.PersonId,
+                    Vorname = per.Vorname,
+                    Nachname = per.Nachname,
+                    Rolle = per.Rolle });
+            }
         }
     }
 }

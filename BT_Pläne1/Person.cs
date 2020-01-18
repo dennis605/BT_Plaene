@@ -116,7 +116,7 @@
         /// <summary>
         /// The getPerson
         /// </summary>
-        public static void getPerson(string rolle) // Mitarbeiter oder Bewohner
+        public static IList<Person> getPerson(string rolle) // Mitarbeiter oder Bewohner
         {
             //TODO:public void getPerson() // Mitarbeiter oder Bewohner -> getPerson(string rolle)
             string _rolle = rolle;
@@ -124,14 +124,37 @@
             using (Context db = new Context())
             {
                 //var req = from pers in db.Personen where rolle == _rolle select pers;
-                var req = db.Personen.Where(r => r.Rolle == _rolle);
+                var req = db.Personen.Where(r => r.Rolle == _rolle).ToList();
                 // return req as ICollection<Person>;
 
 
-                foreach (var pers in req)
-                {
-                    Console.WriteLine($"Vorname:{ pers.Vorname } Nachname:{ pers.Nachname} Rolle:{pers.Rolle}");
-                }
+                // foreach (var pers in req)
+                // {
+                //    Console.WriteLine($"Vorname:{ pers.Vorname } Nachname:{ pers.Nachname} Rolle:{pers.Rolle}");
+                // }
+                return req;
+            }
+
+
+        }
+
+        public static string getPersontoString(string rolle) // Mitarbeiter oder Bewohner
+        {
+            //TODO:public void getPerson() // Mitarbeiter oder Bewohner -> getPerson(string rolle)
+            string _rolle = rolle;
+
+            using (Context db = new Context())
+            {
+                //var req = from pers in db.Personen where rolle == _rolle select pers;
+                var req = db.Personen.Where(r => r.Rolle == _rolle).ToString();
+                // return req as ICollection<Person>;
+
+
+                // foreach (var pers in req)
+                // {
+                //    Console.WriteLine($"Vorname:{ pers.Vorname } Nachname:{ pers.Nachname} Rolle:{pers.Rolle}");
+                // }
+                return req;
             }
 
 
