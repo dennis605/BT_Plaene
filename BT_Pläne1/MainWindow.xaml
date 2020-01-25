@@ -6,17 +6,34 @@
         xmlns:local="clr-namespace:BT_Pläne1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <ListView x:Name="listPerson" Margin="0,0,497,0">
-        <ListView.View>
-            <GridView>
-                <GridViewColumn Header="Vorname" DisplayMemberBinding="{Binding Vorname}" Width="auto" />
-                <GridViewColumn Header="Nachname" DisplayMemberBinding="{Binding Nachname}" Width="auto"/>
-                <GridViewColumn Header="Rolle" DisplayMemberBinding="{Binding Rolle}" Width="auto" />
+
+    <StackPanel Orientation="Horizontal">
+        <ListView x:Name="listMitarbeiter" Margin="0,0,632,0">
+            <ListView.View >
+                <GridView >
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}" Width="auto" />
+                    <GridViewColumn Header="Vorname" DisplayMemberBinding="{Binding Vorname}" Width="auto" />
+                    <GridViewColumn Header="Nachname" DisplayMemberBinding="{Binding Nachname}" Width="auto"/>
+                    <GridViewColumn Header="Rolle" DisplayMemberBinding="{Binding Rolle}" Width="auto" />
+                </GridView>
+            </ListView.View>
 
 
-            </GridView>
-            
-        </ListView.View>
-        
-    </ListView>
+
+        </ListView>
+        <ListView x:Name="listBewohner" Margin="0,0,0,0">
+            <ListView.View >
+                <GridView >
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}" Width="auto" />
+                    <GridViewColumn Header="Vorname" DisplayMemberBinding="{Binding Vorname}" Width="auto" />
+                    <GridViewColumn Header="Nachname" DisplayMemberBinding="{Binding Nachname}" Width="auto"/>
+                    <GridViewColumn Header="Rolle" DisplayMemberBinding="{Binding Rolle}" Width="auto" />
+                </GridView>
+            </ListView.View>
+
+
+
+        </ListView>
+    </StackPanel>
+
 </Window>

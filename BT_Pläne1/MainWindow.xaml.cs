@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,14 +24,31 @@ namespace BT_Pläne1
         public MainWindow()
         {
             InitializeComponent();
-            IList<Person>item = Person.getPerson("Mitarbeiter");
-                        foreach (var per in item)
+            IList<Person>itemMA = Person.getPerson("Mitarbeiter");
+            IList<Person>itemBew = Person.getPerson("Bewohner");
+
+            //ObservableCollection<Person> employees = new ObservableCollection<Person>();
+            //listPerson.ItemsSource = employees;
+
+            foreach (var per in itemMA)
             {
-                listPerson.Items.Add(new{
+                listMitarbeiter.Items.Add(new
+                {
                     id = per.PersonId,
                     Vorname = per.Vorname,
                     Nachname = per.Nachname,
-                    Rolle = per.Rolle });
+                    Rolle = per.Rolle
+                });
+            }
+            foreach (var bew in itemBew)
+            {
+                listBewohner.Items.Add(new
+                {
+                    id = bew.PersonId,
+                    Vorname = bew.Vorname,
+                    Nachname = bew.Nachname,
+                    Rolle = bew.Rolle
+                });
             }
         }
     }
