@@ -51,5 +51,10 @@ namespace BT_Pläne1
                 });
             }
         }
+
+        private void Btn_MA_Click(object sender, RoutedEventArgs e)
+        {
+            Person.CreatePerson(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text, "Mitarbeiter");
+        }
     }
 }

@@ -7,8 +7,33 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
-    <StackPanel Orientation="Horizontal">
-        <ListView x:Name="listMitarbeiter" Margin="0,0,632,0">
+    <StackPanel Orientation="Horizontal" Height="auto" Margin="20,0,20,0">
+        <ListView x:Name="listMitarbeiter" Margin="0,0,10,0">
+            <ListView.View >
+                <GridView >
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}" Width="auto" />
+                    <GridViewColumn Header="Vorname" DisplayMemberBinding="{Binding Vorname}" Width="auto" />
+                    <GridViewColumn Header="Nachname" DisplayMemberBinding="{Binding Nachname}" Width="auto"/>
+                    <GridViewColumn Header="Rolle" DisplayMemberBinding="{Binding Rolle}" Width="auto" />
+                </GridView>
+            </ListView.View>
+            
+            
+
+
+        </ListView>
+        <StackPanel x:Name="Eingabe_Mitarbeiter" Orientation="Vertical" Height="auto" Margin="20,0,20,0">
+            <TextBox x:Name="Eingabe_Vorname_MA" Text="Vorname" TextWrapping="Wrap" Width="120" Height="24" Margin="0,0,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="Eingabe_Nachname_MA" Text="Nachname" TextWrapping="Wrap" Width="120" Height="26" RenderTransformOrigin="0.5,0.5"/>
+
+
+            <Button x:Name="Btn_MA" Content="Übernehmen" Click="Btn_MA_Click">
+                
+            </Button>
+        </StackPanel>
+
+
+        <ListView x:Name="listBewohner">
             <ListView.View >
                 <GridView >
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}" Width="auto" />
@@ -21,19 +46,7 @@
 
 
         </ListView>
-        <ListView x:Name="listBewohner" Margin="0,0,0,0">
-            <ListView.View >
-                <GridView >
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}" Width="auto" />
-                    <GridViewColumn Header="Vorname" DisplayMemberBinding="{Binding Vorname}" Width="auto" />
-                    <GridViewColumn Header="Nachname" DisplayMemberBinding="{Binding Nachname}" Width="auto"/>
-                    <GridViewColumn Header="Rolle" DisplayMemberBinding="{Binding Rolle}" Width="auto" />
-                </GridView>
-            </ListView.View>
-
-
-
-        </ListView>
+        
     </StackPanel>
 
 </Window>
