@@ -24,8 +24,8 @@ namespace BT_Pläne1
         public MainWindow()
         {
             InitializeComponent();
-            IList<Person>itemMA = Person.getPerson("Mitarbeiter");
-            IList<Person>itemBew = Person.getPerson("Bewohner");
+            IList<Person> itemMA = Person.getPerson("Mitarbeiter");
+            IList<Person> itemBew = Person.getPerson("Bewohner");
 
             //ObservableCollection<Person> employees = new ObservableCollection<Person>();
             //listPerson.ItemsSource = employees;
@@ -55,6 +55,22 @@ namespace BT_Pläne1
         private void Btn_MA_Click(object sender, RoutedEventArgs e)
         {
             Person.CreatePerson(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text, "Mitarbeiter");
+            //listMitarbeiter.Items.Refresh();
+
+            // setzt Listmitarbeiter Listview zurück
+            listMitarbeiter.Items.Clear();
+            IList<Person> itemMA = Person.getPerson("Mitarbeiter");
+            foreach (var per in itemMA)
+            {
+                listMitarbeiter.Items.Add(new
+                {
+                    id = per.PersonId,
+                    Vorname = per.Vorname,
+                    Nachname = per.Nachname,
+                    Rolle = per.Rolle
+                });
+            }
+            
         }
     }
 }
