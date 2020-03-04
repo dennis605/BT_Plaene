@@ -21,16 +21,18 @@ namespace BT_Pläne1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool firstInput;
+
         public MainWindow()
         {
             InitializeComponent();
-            
+
             // Listview Mitarbeiter auf
             updateListview_MA();
             // Listview Bewohner auf
 
             updateListView_Bew();
-            
+
         }
 
         // setzt Listmitarbeiter Listview zurück und liest neu ein
@@ -73,7 +75,34 @@ namespace BT_Pläne1
 
             // setzt Listmitarbeiter Listview zurück
             updateListview_MA();
+
+        }
+
+        private void Eingabe_Vorname_MA_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Eingabe_Vorname_MA.Text = "";
+        }
+
+        private void Eingabe_Vorname_MA_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= Eingabe_Vorname_MA_GotFocus;
+        }
+
+        private void Eingabe_Nachname_MA_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (!firstInput)
+            {
+                Eingabe_Nachname_MA.Text = "";
+                firstInput = true;
+            }
+
             
+           // Eingabe_Nachname_MA.Text = "";
+            //TextBox tb = (TextBox)sender;
+            //tb.Text = string.Empty;
+            //tb.GotFocus -= Eingabe_Nachname_MA_GotFocus;
         }
     }
     
