@@ -39,19 +39,25 @@ namespace BT_Pläne1
 
         public void updateListview_MA()
         {
-            listMitarbeiter.Items.Clear();
             IList<Person> itemMA = Person.getPerson("Mitarbeiter");
-            foreach (var per in itemMA)
-            {
-                listMitarbeiter.Items.Add(new
-                {
-                    id = per.PersonId,
-                    Vorname = per.Vorname,
-                    Nachname = per.Nachname,
-                    Rolle = per.Rolle
-                });
-            }
+            listMitarbeiter.ItemsSource = itemMA;
         }
+
+        //public void updateListview_MA()
+        //{
+        //    listMitarbeiter.Items.Clear();
+        //    IList<Person> itemMA = Person.getPerson("Mitarbeiter");
+        //    foreach (var per in itemMA)
+        //    {
+        //        listMitarbeiter.Items.Add(new
+        //        {
+        //            id = per.PersonId,
+        //            Vorname = per.Vorname,
+        //            Nachname = per.Nachname,
+        //            Rolle = per.Rolle
+        //        });
+        //    }
+        //}
         public void updateListView_Bew()
 
         {
@@ -103,6 +109,12 @@ namespace BT_Pläne1
             //TextBox tb = (TextBox)sender;
             //tb.Text = string.Empty;
             //tb.GotFocus -= Eingabe_Nachname_MA_GotFocus;
+        }
+
+        private void ma_selection_changed(object sender, SelectionChangedEventArgs e)
+        {
+            Console.WriteLine("grtgrth");
+            var itm = listMitarbeiter.Items.CurrentItem;
         }
     }
     
