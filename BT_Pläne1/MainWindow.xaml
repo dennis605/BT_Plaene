@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
 
     <StackPanel Orientation="Horizontal" Height="auto" Margin="20,0,20,0">
-        <ListView x:Name="listMitarbeiter" Margin="10,10,10,10" SelectionChanged="ma_selection_changed">
+        <ListView x:Name="listMitarbeiter" Margin="10,10,10,10" SelectionChanged="ma_selection_changed" Loaded="listMitarbeiter_Loaded">
             <ListView.View >
                 <GridView >
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}" Width="auto" />
@@ -33,7 +33,7 @@
         </StackPanel>
 
 
-        <ListView x:Name="listBewohner" Margin="10,10,10,10">
+        <ListView x:Name="listBewohner" Margin="10,10,10,10" SelectionChanged="listBewohner_SelectionChanged">
             <ListView.View >
                 <GridView >
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}" Width="auto" />

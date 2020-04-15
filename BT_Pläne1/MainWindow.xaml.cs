@@ -43,49 +43,45 @@ namespace BT_Pläne1
             listMitarbeiter.ItemsSource = itemMA;
         }
 
-        //public void updateListview_MA()
-        //{
-        //    listMitarbeiter.Items.Clear();
-        //    IList<Person> itemMA = Person.getPerson("Mitarbeiter");
-        //    foreach (var per in itemMA)
-        //    {
-        //        listMitarbeiter.Items.Add(new
-        //        {
-        //            id = per.PersonId,
-        //            Vorname = per.Vorname,
-        //            Nachname = per.Nachname,
-        //            Rolle = per.Rolle
-        //        });
-        //    }
-        //}
+        
+        
+        
+        
+        
         public void updateListView_Bew()
 
         {
             IList<Person> itemBew = Person.getPerson("Bewohner");
             listMitarbeiter.ItemsSource = itemBew;
 
-            //IList<Person> itemBew = Person.getPerson("Bewohner");
 
-            //foreach (var bew in itemBew)
-            //{
-            //    listBewohner.Items.Add(new
-            //    {
-            //        id = bew.PersonId,
-            //        Vorname = bew.Vorname,
-            //        Nachname = bew.Nachname,
-            //        Rolle = bew.Rolle
-            //    });
-            //}
         }
 
         private void Btn_MA_Click(object sender, RoutedEventArgs e)
         {
-            Person.CreatePerson(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text, "Mitarbeiter");
+            if (!Person.ValidateInput(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text))
+            {
+                throw new NotImplementedException();
+            }
+           if (Person.CheckDBforDuplicate(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text, "Mitarbeiter"))
+            {
+                Person.CreatePerson(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text, "Mitarbeiter");
+                updateListview_MA();
+            }
+           else
+            {
+                var mes = new Exception("Nicht möglich, da doppelt");
+                throw new NotImplementedException();
+                Console.WriteLine("Geht nicht");
+                
+                return;
+            }
 
-            // setzt Listmitarbeiter Listview zurück
-            updateListview_MA();
+            
 
         }
+
+     
 
         private void Eingabe_Vorname_MA_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -118,6 +114,16 @@ namespace BT_Pläne1
         {
             Console.WriteLine("grtgrth");
             var itm = listMitarbeiter.Items.CurrentItem;
+        }
+
+        private void listMitarbeiter_Loaded(object sender, RoutedEventArgs e)
+        {
+            updateListview_MA();
+        }
+
+        private void listBewohner_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            updateListView_Bew();
         }
     }
     

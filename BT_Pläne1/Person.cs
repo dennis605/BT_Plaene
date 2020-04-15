@@ -44,6 +44,16 @@
         /// </summary>
         public virtual List<PersonenEvent> PersonenEvents { get; set; }
 
+        public static bool ValidateInput(string vname, string nname)
+        {
+            if (vname.Length <= 0) return false;
+            if (nname.Length <= 0) return false;
+            else
+            {
+                return true;
+            }
+        }
+
         // Speichere Mitarbeiter oder Bewohner in Datenbank
         /// <summary>
         /// The SavePersontoDBB
@@ -102,6 +112,7 @@
                         if (db.Personen.Any(x => x.Rolle == rolle))
                         {
                             Console.WriteLine($"Person ({vname} {nnachname} mit Rolle {rolle} existiert schon in DB");
+
                             return false;
 
                         }
