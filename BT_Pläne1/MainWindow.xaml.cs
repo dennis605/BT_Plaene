@@ -62,17 +62,20 @@ namespace BT_Pläne1
 
         {
             IList<Person> itemBew = Person.getPerson("Bewohner");
+            listMitarbeiter.ItemsSource = itemBew;
 
-            foreach (var bew in itemBew)
-            {
-                listBewohner.Items.Add(new
-                {
-                    id = bew.PersonId,
-                    Vorname = bew.Vorname,
-                    Nachname = bew.Nachname,
-                    Rolle = bew.Rolle
-                });
-            }
+            //IList<Person> itemBew = Person.getPerson("Bewohner");
+
+            //foreach (var bew in itemBew)
+            //{
+            //    listBewohner.Items.Add(new
+            //    {
+            //        id = bew.PersonId,
+            //        Vorname = bew.Vorname,
+            //        Nachname = bew.Nachname,
+            //        Rolle = bew.Rolle
+            //    });
+            //}
         }
 
         private void Btn_MA_Click(object sender, RoutedEventArgs e)
