@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BT_Pläne1
 {
@@ -43,11 +33,11 @@ namespace BT_Pläne1
             listMitarbeiter.ItemsSource = itemMA;
         }
 
-        
-        
-        
-        
-        
+
+
+
+
+
         public void updateListView_Bew()
 
         {
@@ -62,26 +52,29 @@ namespace BT_Pläne1
             if (!Person.ValidateInput(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text))
             {
                 throw new NotImplementedException();
+                //TODO: Exception abfangen (vname oder nname leer)
             }
-           if (Person.CheckDBforDuplicate(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text, "Mitarbeiter"))
+            if (Person.CheckDBforDuplicate(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text, "Mitarbeiter"))
             {
                 Person.CreatePerson(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text, "Mitarbeiter");
                 updateListview_MA();
             }
-           else
+            else
             {
                 var mes = new Exception("Nicht möglich, da doppelt");
                 throw new NotImplementedException();
+                //TODO: Exception abfangen (doppelt)
+
                 Console.WriteLine("Geht nicht");
-                
+
                 return;
             }
 
-            
+
 
         }
 
-     
+
 
         private void Eingabe_Vorname_MA_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -103,8 +96,8 @@ namespace BT_Pläne1
                 firstInput = true;
             }
 
-            
-           // Eingabe_Nachname_MA.Text = "";
+
+            // Eingabe_Nachname_MA.Text = "";
             //TextBox tb = (TextBox)sender;
             //tb.Text = string.Empty;
             //tb.GotFocus -= Eingabe_Nachname_MA_GotFocus;
@@ -126,5 +119,5 @@ namespace BT_Pläne1
             updateListView_Bew();
         }
     }
-    
+
 }
