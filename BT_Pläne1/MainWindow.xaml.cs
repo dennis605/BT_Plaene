@@ -102,6 +102,12 @@ namespace BT_Pläne1
         {
             Console.WriteLine("grtgrth");
             var itm = listMitarbeiter.Items.CurrentItem;
+            var selection = listMitarbeiter.SelectedItem;
+            var temp_selection = (Person) listMitarbeiter.SelectedItems[0];
+            
+            Eingabe_Vorname_MA.Text = temp_selection.Vorname;
+            Eingabe_Nachname_MA.Text = temp_selection.Nachname;
+
         }
 
         private void listMitarbeiter_Loaded(object sender, RoutedEventArgs e)
@@ -113,6 +119,7 @@ namespace BT_Pläne1
         {
             updateListView_Bew();
         }
+
     }
 
 }
