@@ -23,11 +23,13 @@
 
         </ListView>
         <StackPanel x:Name="Eingabe_Mitarbeiter" Orientation="Vertical" Height="auto" Margin="20,10,20,0">
-            <TextBox x:Name="Eingabe_Vorname_MA" Text="Vorname" TextWrapping="Wrap" Width="120" Height="24" Margin="0,0,0,0" VerticalAlignment="Top" AutomationProperties.Name="txt_MA_Vorname" GotFocus="Eingabe_Vorname_MA_GotFocus" />
-            <TextBox x:Name="Eingabe_Nachname_MA" Text="Nachname" TextWrapping="Wrap" Width="120" Height="26" RenderTransformOrigin="0.5,0.5" GotFocus="Eingabe_Nachname_MA_GotFocus"/>
+            <Label>Vorname</Label>
+            <TextBox x:Name="Eingabe_Vorname_MA" TextWrapping="Wrap" Width="120" Height="20" Margin="0,0,0,0" VerticalAlignment="Top" AutomationProperties.Name="txt_MA_Vorname" GotFocus="Eingabe_Vorname_MA_GotFocus" />
+            <Label>Nachname</Label>
+            <TextBox x:Name="Eingabe_Nachname_MA" TextWrapping="Wrap" Width="120" Height="20"  GotFocus="Eingabe_Nachname_MA_GotFocus" Margin="0,0,0,20"/>
 
 
-            <Button x:Name="Btn_MA" Content="Übernehmen" Click="Btn_MA_Click">
+            <Button x:Name="Btn_MA" Content="Übernehmen" Click="Btn_MA_Click" Height="20">
                 
             </Button>
         </StackPanel>

@@ -33,11 +33,6 @@ namespace BT_Pläne1
             listMitarbeiter.ItemsSource = itemMA;
         }
 
-
-
-
-
-
         public void updateListView_Bew()
 
         {
