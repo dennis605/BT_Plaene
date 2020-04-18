@@ -100,10 +100,11 @@ namespace BT_Pläne1
 
         private void ma_selection_changed(object sender, SelectionChangedEventArgs e)
         {
-            Console.WriteLine("grtgrth");
+            //updateListview_MA();
+            listMitarbeiter.UpdateLayout();
             var itm = listMitarbeiter.Items.CurrentItem;
             var selection = listMitarbeiter.SelectedItem;
-            var temp_selection = (Person) listMitarbeiter.SelectedItems[0];
+            var temp_selection = (Person)listMitarbeiter.SelectedItems[0];
             
             Eingabe_Vorname_MA.Text = temp_selection.Vorname;
             Eingabe_Nachname_MA.Text = temp_selection.Nachname;
@@ -120,6 +121,18 @@ namespace BT_Pläne1
             updateListView_Bew();
         }
 
+        private void Btn_MA_Delete(object sender, RoutedEventArgs e)
+        {
+            if (Person.ValidateInput(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text))
+            {
+                Person.loeschePerson(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text, "Mitarbeiter");
+                listMitarbeiter.UpdateLayout();
+
+
+
+
+            }
+        }
     }
 
 }
