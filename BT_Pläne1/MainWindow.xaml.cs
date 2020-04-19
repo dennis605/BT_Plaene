@@ -17,11 +17,11 @@ namespace BT_Pläne1
         {
             InitializeComponent();
 
-            // Listview Mitarbeiter auf
-            updateListview_MA();
-            // Listview Bewohner auf
+            
 
             updateListView_Bew();
+            
+
 
         }
 
@@ -29,6 +29,7 @@ namespace BT_Pläne1
 
         public void updateListview_MA()
         {
+           listMitarbeiter.ItemsSource = null;
             IList<Person> itemMA = Person.getPerson("Mitarbeiter");
             listMitarbeiter.ItemsSource = itemMA;
         }
@@ -100,15 +101,23 @@ namespace BT_Pläne1
 
         private void ma_selection_changed(object sender, SelectionChangedEventArgs e)
         {
-            //updateListview_MA();
-            listMitarbeiter.UpdateLayout();
-            var itm = listMitarbeiter.Items.CurrentItem;
-            var selection = listMitarbeiter.SelectedItem;
-            var temp_selection = (Person)listMitarbeiter.SelectedItems[0];
             
-            Eingabe_Vorname_MA.Text = temp_selection.Vorname;
-            Eingabe_Nachname_MA.Text = temp_selection.Nachname;
+            Person temp_selection = new Person(); 
+           if (listMitarbeiter.SelectedIndex >= 0 )
+            {
+                temp_selection = (Person)listMitarbeiter.SelectedItems[0];
+                Eingabe_Vorname_MA.Text = temp_selection.Vorname;
+                Eingabe_Nachname_MA.Text = temp_selection.Nachname;
+;            }
+           else
+            {
+                return;
+            }
 
+
+
+            
+            //listMitarbeiter.SelectedItems[0] = null;
         }
 
         private void listMitarbeiter_Loaded(object sender, RoutedEventArgs e)
@@ -126,12 +135,29 @@ namespace BT_Pläne1
             if (Person.ValidateInput(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text))
             {
                 Person.loeschePerson(Eingabe_Vorname_MA.Text, Eingabe_Nachname_MA.Text, "Mitarbeiter");
-                listMitarbeiter.UpdateLayout();
+               ////// IList<Person> itemMA = Person.getPerson("Mitarbeiter");
+                /////listMitarbeiter.ItemsSource = itemMA;
+                updateListview_MA();
+                Eingabe_Vorname_MA.Text = "";
+                Eingabe_Nachname_MA.Text = "";
 
+                //listBewohner.Items.Refresh();
+                //listMitarbeiter.SelectedItems[0] = null;
+                //updateListview_MA();
+                //listMitarbeiter.UpdateLayout();
+                // listMitarbeiter.Items.Refresh();
+                //listMitarbeiter.ItemsSource= null;
+                //listMitarbeiter.SelectedItems[0] = null;
 
 
 
             }
+        }
+
+        private void listMitarbeiter_SourceUpdated(object sender, System.Windows.Data.DataTransferEventArgs e)
+        {
+            updateListview_MA(); 
+
         }
     }
 
