@@ -36,7 +36,7 @@
         </StackPanel>
 
 
-        <ListView x:Name="listBewohner" Margin="10,10,10,10" SelectionChanged="listBewohner_SelectionChanged">
+        <ListView x:Name="listBewohner" Margin="10,10,10,10" SelectionChanged="listBewohner_SelectionChanged" Loaded="listBewohner_Loaded">
             <ListView.View >
                 <GridView >
                     <GridViewColumn Header="ID" DisplayMemberBinding="{Binding id}" Width="auto" />
@@ -48,8 +48,23 @@
 
 
 
+            
+
+
+
         </ListView>
-        
+        <StackPanel x:Name="Eingabe_Bewohner" Orientation="Vertical" Height="auto" Margin="20,10,20,0">
+            <Label>Vorname</Label>
+            <TextBox x:Name="Eingabe_Vorname_Bew" TextWrapping="Wrap" Width="120" Height="20" Margin="0,0,0,0" VerticalAlignment="Top" AutomationProperties.Name="txt_Bew_Vorname" GotFocus="Eingabe_Vorname_Bew_GotFocus" />
+            <Label>Nachname</Label>
+            <TextBox x:Name="Eingabe_Nachname_Bew" TextWrapping="Wrap" Width="120" Height="20"  GotFocus="Eingabe_Nachname_Bew_GotFocus" Margin="0,0,0,0"/>
+
+
+            <Button x:Name="Btn_Bew" Content="Übernehmen" Click="Btn_Bew_Click" Height="20" Margin="0,20,0,0">
+            </Button>
+            <Button x:Name="Btn_Bew_delete" Content="Löschen" Click="Btn_Bew_Delete" Height="20" Margin="0,20,0,0">
+            </Button>
+        </StackPanel>
     </StackPanel>
 
 </Window>
