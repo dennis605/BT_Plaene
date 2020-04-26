@@ -22,23 +22,24 @@ namespace BT_Pläne1
         // Navigation Property für Person
         //public ICollection<Person> Persons { get; set; }
         public virtual List<PersonenEvent> PersonenEvents { get; set; }
+        public List<Person> Personen { get; set; }
 
 
 
 
-        public static void CreateEvent(string vname, string nname, string rolle)
+        public static void CreateEvent(string EventName, DateTime EventDatum, DateTime EventBeginn, DateTime EventEnd, string EventOrt, string EventBeschreibung, string EventInfo = "", int EventVorlauf = 0)
         {
-            string _rolle = rolle;
+            
 
             //Implementierung ob Mitarbeiter schon existiert
 
-            if (CheckDBforDuplicate(vname, nname, _rolle))
+            if (true)
             {
-                Event.SaveEventToDB(vname, nname, _rolle);
+                //Event.SaveEventToDB(vname, nname, _rolle);
             }
         }
 
-        public static bool CheckDBforDuplicate(string vname, string nnachname, string rolle)
+        public static bool CheckDBforDuplicate(string EventName, DateTime EventDatum, DateTime EventBeginn, DateTime EventEnd, string EventOrt, string EventBeschreibung, string EventInfo = "", int EventVorlauf = 0)
         {
             return true;
             //using (Context db = new Context())
@@ -61,17 +62,23 @@ namespace BT_Pläne1
             //}
         }
 
-        public static void SaveEventToDB(string vname, string nname, string rolle)
+        public static void SaveEventToDB(string EventName, DateTime EventDatum, DateTime EventBeginn, DateTime EventEnd, string EventOrt, string EventBeschreibung, string EventInfo = "", int EventVorlauf=0)
         {
             using (Context db = new Context())
             {
-                Person pers = new Person();
-                pers.Vorname = vname;
-                pers.Nachname = nname;
-                pers.Rolle = rolle;
-                db.Personen.Add(pers);
+                Event ev = new Event();
+
+                ev.EventName= EventName;
+                ev.EventDatum = EventDatum;
+                ev.EventBeginn = EventBeginn;
+                ev.EventEnd = EventEnd;
+                ev.EventVorlauf = EventVorlauf;
+                ev.EventOrt = EventOrt;
+                ev.EventBeschreibung = EventBeschreibung;
+                ev.EventInfo = EventInfo;
+                db.Events.Add(ev);
                 var result = db.SaveChanges();
-                Console.WriteLine("Check:Nachname: " + result);
+                //Console.WriteLine("Check:Nachname: " + result);
             }
         }
 
