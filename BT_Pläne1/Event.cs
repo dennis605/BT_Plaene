@@ -42,7 +42,7 @@ namespace BT_Pläne1
         public static bool CheckDBforDuplicate(string EventName, DateTime EventDatum, DateTime EventBeginn, DateTime EventEnd, string EventOrt, string EventBeschreibung, string EventInfo = "", int EventVorlauf = 0)
         {
             return true;
-            //using (Context db = new Context())
+            //using (Context db = new Context ())
             //{
             //    if (db.Personen.Any(x => x.Nachname == nnachname))
             //    {
