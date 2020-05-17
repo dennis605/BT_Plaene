@@ -36,6 +36,7 @@ namespace BT_Pläne1
             if (true)
             {
                 //Event.SaveEventToDB(vname, nname, _rolle);
+                SaveEventToDB(EventName, EventDatum, EventBeginn, EventEnd, EventOrt, EventBeschreibung, EventInfo = "", EventVorlauf = 0);
             }
         }
 
