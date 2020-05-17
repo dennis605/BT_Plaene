@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,16 @@ namespace BT_Pläne1
 
 
 
-        public static void CreateEvent(string EventName, DateTime EventDatum, DateTime EventBeginn, DateTime EventEnd, string EventOrt, string EventBeschreibung, string EventInfo = "", int EventVorlauf = 0)
+        public static void CreateEvent(
+            string EventName, 
+            DateTime EventDatum, 
+            DateTime EventBeginn, 
+            DateTime EventEnd, 
+            string EventOrt, 
+            string EventBeschreibung, 
+            List<Person> pers, 
+            string EventInfo = "", 
+            int EventVorlauf = 0)
         {
             
 
@@ -36,11 +46,19 @@ namespace BT_Pläne1
             if (true)
             {
                 //Event.SaveEventToDB(vname, nname, _rolle);
-                SaveEventToDB(EventName, EventDatum, EventBeginn, EventEnd, EventOrt, EventBeschreibung, EventInfo = "", EventVorlauf = 0);
+                SaveEventToDB(EventName, EventDatum, EventBeginn, EventEnd, EventOrt, EventBeschreibung, pers, EventInfo = "", EventVorlauf = 0);
             }
         }
 
-        public static bool CheckDBforDuplicate(string EventName, DateTime EventDatum, DateTime EventBeginn, DateTime EventEnd, string EventOrt, string EventBeschreibung, string EventInfo = "", int EventVorlauf = 0)
+        public static bool CheckDBforDuplicate(
+            string EventName, 
+            DateTime EventDatum, 
+            DateTime EventBeginn, 
+            DateTime EventEnd, 
+            string EventOrt, 
+            string EventBeschreibung, 
+            string EventInfo = "", 
+            int EventVorlauf = 0)
         {
             return true;
             //using (Context db = new Context ())
@@ -63,7 +81,16 @@ namespace BT_Pläne1
             //}
         }
 
-        public static void SaveEventToDB(string EventName, DateTime EventDatum, DateTime EventBeginn, DateTime EventEnd, string EventOrt, string EventBeschreibung, string EventInfo = "", int EventVorlauf=0)
+        public static void SaveEventToDB(
+            string EventName, 
+            DateTime EventDatum, 
+            DateTime EventBeginn, 
+            DateTime EventEnd, 
+            string EventOrt, 
+            string EventBeschreibung, 
+            IList <Person> pers, 
+            string EventInfo = "", 
+            int EventVorlauf=0)
         {
             using (Context db = new Context())
             {
@@ -76,6 +103,7 @@ namespace BT_Pläne1
                 ev.EventVorlauf = EventVorlauf;
                 ev.EventOrt = EventOrt;
                 ev.EventBeschreibung = EventBeschreibung;
+                ev.Personen = pers;
                 ev.EventInfo = EventInfo;
                 db.Events.Add(ev);
                 var result = db.SaveChanges();
